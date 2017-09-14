@@ -1,0 +1,279 @@
+
+
+html {
+	margin:0;
+    padding:0;
+    height:100%;
+	box-sizing: border-box;
+}
+
+
+body{
+	margin:0;
+    padding:0;
+    height:100%;
+	font-family: 'Montserrat', sans-serif;
+	
+}
+
+#container {
+   min-height:100%;
+   position:relative;
+}
+
+@font-face {
+    font-family: streamster;
+    src: url(streamster.ttf);
+}
+
+main{
+	margin: 5vw auto;
+}
+
+nav {
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+	margin-bottom: 20px;
+	text-align:center;
+}
+
+nav li{
+	list-style-type: none;
+	display: inline-block;
+}
+
+nav ul{
+	padding:0;
+}
+
+nav li a {
+	border-style: solid;
+	width: 150px; 
+	border-width: 1px;
+	border-color: rgba(0,0,0,0.1);
+	font-size: 23px;
+    display: inline-block;
+    color: white;
+	background-color: rgba(0,0,0,0.5);
+    text-align: center;
+    padding: 5px 30px;
+	padding-top: 10px;
+	margin-bottom: 15px;
+    text-decoration: none;
+	font-weight: 900;
+	transition: all 0.25s linear;
+	font-family: 'Josefin Sans', sans-serif;
+	position:relative;
+	margin-top: 15px;
+	cursor:default;
+}
+
+
+nav li a::after {
+    top: 0%;
+	left: 15%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	border-color: rgba(0, 0, 0, 0);
+	border-top-color: rgba(255,255,255,0.2);
+	border-width: 20px;
+	margin-left: -20px;
+	
+
+}
+
+nav li a:hover {
+	border-color: white;
+}
+
+.fullscreen-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+}
+
+.video-overlay {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+	width:100%;
+	height: 100%;
+	box-shadow: inset 0 0 12px;
+	background: -moz-linear-gradient(top, rgba(174,188,191,0) 0%, rgba(110,119,116,0.25) 25%, rgba(10,14,10,0.72) 72%, rgba(10,8,9,1) 100%);
+	background: -webkit-linear-gradient(top, rgba(174,188,191,0) 0%,rgba(110,119,116,0.25) 25%,rgba(10,14,10,0.72) 72%,rgba(10,8,9,1) 100%);
+	background: linear-gradient(to bottom, rgba(174,188,191,0) 0%,rgba(110,119,116,0.25) 25%,rgba(10,14,10,0.72) 72%,rgba(10,8,9,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00aebcbf', endColorstr='#0a0809',GradientType=0 );
+	opacity: .8;
+}
+
+.fullscreen-bg__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .fullscreen-bg__video {
+   height: 300%;
+	top: -100%;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .fullscreen-bg__video {
+    width: 300%;
+	left: -100%;
+  }
+}
+
+.video-overlay:after { content: ""; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgTWFjaW50b3NoIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjI4RkZBQTgzNzg1NzExRTU4NTQyODc3OUM4MTZGMUREIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjI4RkZBQTg0Nzg1NzExRTU4NTQyODc3OUM4MTZGMUREIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MjhGRkFBODE3ODU3MTFFNTg1NDI4Nzc5QzgxNkYxREQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MjhGRkFBODI3ODU3MTFFNTg1NDI4Nzc5QzgxNkYxREQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz66uHInAAAAIUlEQVR42mL5//8/AyMj42YGIGBigABfEMEIkoEBgAADAKvuBwVS8BAjAAAAAElFTkSuQmCC); background-size: 3px 3px; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity:.2; }
+
+h1{
+	color:black;
+	padding-top: 5px;
+	padding-left: 30px;
+	margin-bottom: 0;
+	text-shadow: 0px 0px 2px;
+	font-size: 40px;
+	margin-top: 0;
+	font-family: streamster;
+	background-image: url(../src/MarcaIso.png);
+	background-size: 190px 43px;
+	background-position: 32px 55px;
+	height: 110px;
+	background-repeat: no-repeat;
+	display:inline-block;
+}
+
+h2{
+	color:black;
+	float:center;
+	text-align:center;
+	font-size: 50px;
+	padding-bottom: 0px;
+	padding: 10px
+}
+
+h3{
+	color:black;
+	float:center;
+	text-align:center;
+	font-size: 40px;
+}
+
+article{
+	text-align:center;
+	background-color: #F6F6F6;
+	box-shadow: 0px 0px 5px;
+	padding: 30px;
+	width: 60%;
+	margin: auto;
+	margin-bottom: 60px;
+
+}
+
+footer{
+	position:fixed;
+	text-align:center;
+	color: white;
+	font-weight: 600;
+	padding-top: 15px;
+	height: 30px;
+	width: 100%;
+	background-color: rgba(0,0,0,0.2);
+	bottom: 0px;
+}
+
+header div{
+	background-image: url(../src/menubutt.png);
+	background-size: 40px 30px;
+	height: 50px;
+	width: 50px;
+	background-repeat: no-repeat;
+	display:inline-block;
+	margin-top: 25px;
+	margin-right: 25px;
+	float:right;
+}
+
+.sep{
+	padding: 0px;
+	width: 50%;
+	height:1px;
+	margin: 20px auto;
+	box-shadow: 0 0 6px;
+}
+
+#comprar, #tecnologia, #testdrive, #modelos{
+	box-shadow: inset 0 0 5px;
+	display:none;
+	background-color:white;
+	text-align:center;
+	margin: 0 auto;
+	padding: 0;
+	width: 90vw;
+	padding-bottom: 100px;
+	overflow:hidden;
+	box-sizing: border-box;
+	position:absolute;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+}
+
+
+#dropTitle{
+	font-size: 23px;
+	background-image:none;
+	padding:0;
+	margin-top: 10px;
+    color: black;
+    text-align: center;
+	font-weight: 900;
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+
+#bar{
+	width:100%;
+}
+
+@media only screen and (max-width: 768px) {
+    nav li a {
+		border-style: none;
+		width: 90vw; 
+		margin-bottom: 0;
+		box-sizing: border-box;
+    }
+	
+	#comprar, #tecnologia, #testdrive, #modelos{
+		margin-top:0;
+		position:static;
+		box-shadow: inset 0 3px 8px #aaaaaa;
+		border-style: solid;
+		border-top-style: none;
+		border-width: 1px;
+	}
+	
+	#bar {
+		background-color: white;
+		height: 75px;
+		box-shadow: 0 0 8px;
+	}
+	
+	h1{
+		background-image:none;
+	}
+}
+
