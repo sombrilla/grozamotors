@@ -5,6 +5,7 @@ html {
     padding:0;
     height:100%;
 	box-sizing: border-box;
+	min-width: 1000px;
 }
 
 
@@ -256,6 +257,14 @@ header div{
 		margin-bottom: 0;
 		box-sizing: border-box;
     }
+	
+	footer{
+	position:fixed;
+	}
+	
+	html{
+		min-width: 0;
+	}
 	
 	#comprar, #tecnologia, #testdrive, #modelos{
 		margin-top:0;

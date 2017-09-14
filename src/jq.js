@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    if(document.body.clientWidth >= 755) {
+    if(document.body.clientWidth >= 753) {
 		$('video').attr('autoplay', true);
 	}
 	else
@@ -9,7 +9,7 @@ $(document).ready(function(){
 	}
 
     $(window).resize(function() {
-        if(document.body.clientWidth >= 755) {
+        if(document.body.clientWidth >= 753) {
             $('video').attr('autoplay', true);
 			$('video').css('display', 'initial');
         }
